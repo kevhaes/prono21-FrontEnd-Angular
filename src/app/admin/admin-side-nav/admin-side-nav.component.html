@@ -1,0 +1,64 @@
+<aside class="sidebar">
+  <nav>
+    <ul class="sidebar__nav">
+      <li>
+        <a
+          [routerLink]="['users']"
+          routerLinkActive="router-link-active"
+          class="sidebar__nav__link"
+        >
+          <span class="material-icons"> supervisor_account </span>
+          <span class="sidebar__nav__text">Users</span>
+        </a>
+      </li>
+
+      <li>
+        <!-- TODO implement routerLinkActive -->
+        <a
+          [routerLink]="['matches']"
+          routerLinkActive="router-link-active"
+          class="sidebar__nav__link"
+        >
+          <span class="material-icons"> sports_soccer </span>
+          <span class="sidebar__nav__text">Matches</span>
+        </a>
+      </li>
+
+      <li>
+        <a
+          [routerLink]="['teams']"
+          routerLinkActive="router-link-active"
+          class="sidebar__nav__link"
+        >
+          <span class="material-icons"> flag </span>
+          <span class="sidebar__nav__text">Teams</span>
+        </a>
+      </li>
+
+      <li>
+        <!-- TODO implement routerLinkActive -->
+        <a
+          [routerLink]="['admin-bet']"
+          routerLinkActive="router-link-active"
+          class="sidebar__nav__link"
+        >
+          <span class="material-icons"> monetization_on </span>
+          <span class="sidebar__nav__text">Bets</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="#" class="sidebar__nav__link">
+          <i class="mdi mdi-camera"></i>
+          <span class="sidebar__nav__text">Camera</span>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="sidebar__nav__link">
+          <i class="mdi mdi-settings"></i>
+          <span class="sidebar__nav__text">Settings</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</aside>

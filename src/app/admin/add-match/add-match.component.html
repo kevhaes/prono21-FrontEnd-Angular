@@ -1,0 +1,98 @@
+<div class="main-div">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>Add a new Match</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form class="example-form">
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+            <td>
+              <mat-form-field class="example-full-width">
+                <mat-select
+                  placeholder="Select Home Team"
+                  [(ngModel)]="match.hometeam.name"
+                  name="hometeamName"
+                  required
+                >
+                  <mat-option *ngFor="let team of teams" [value]="team.name">{{
+                    team.name
+                  }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <mat-form-field class="example-full-width">
+                <mat-select
+                  placeholder="Select Away Team"
+                  [(ngModel)]="match.awayteam.name"
+                  name="awayteamName"
+                  required
+                >
+                  <mat-option *ngFor="let team of teams" [value]="team.name">{{
+                    team.name
+                  }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </td>
+          </tr>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Choose a date</mat-label>
+            <input
+              matInput
+              [matDatepicker]="myDatepicker"
+              [(ngModel)]="match.matchdate"
+              name="matchdate"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="myDatepicker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #myDatepicker></mat-datepicker>
+          </mat-form-field>
+          <tr>
+            <td>
+              <mat-form-field class="example-full-width">
+                <mat-select
+                  placeholder="Select a status"
+                  [(ngModel)]="match.status"
+                  name="status"
+                  required
+                >
+                  <mat-option value="0" name="inactive">Inactive</mat-option>
+                  <mat-option value="1" name="upcomming">Upcomming</mat-option>
+                  <mat-option value="2" name="ongoing">Ongoing</mat-option>
+                  <mat-option value="3" name="finnished">Finnished</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </td>
+          </tr>
+
+          <!-- <tr>
+            <td>
+              <mat-radio-group [(ngModel)]="user.isActive" name="isActive">
+                <mat-radio-button value="true">Active</mat-radio-button>
+                <mat-radio-button value="false">Inactive</mat-radio-button>
+              </mat-radio-group>
+            </td>
+          </tr> -->
+        </table>
+      </form>
+      <mat-spinner
+        [style.display]="showSpinner ? 'block' : 'none'"
+      ></mat-spinner>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button (click)="createMatch()" color="primary">
+        Create
+      </button>
+      <button mat-raised-button (click)="onCloseClick()" color="primary">
+        close
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

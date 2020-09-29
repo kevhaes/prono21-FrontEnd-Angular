@@ -1,0 +1,118 @@
+<div class="main-div">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>Add a new User</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form class="example-form">
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+            <td>
+              <mat-form-field class="example-full-width">
+                <input
+                  matInput
+                  placeholder="Username"
+                  [(ngModel)]="user.username"
+                  name="username"
+                  required
+                />
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="example-full-width">
+                <input
+                  matInput
+                  placeholder="First Name"
+                  [(ngModel)]="user.firstname"
+                  name="firstName"
+                  required
+                />
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="example-full-width">
+                <input
+                  matInput
+                  placeholder="Last Name"
+                  [(ngModel)]="user.lastname"
+                  name="lastName"
+                  required
+                />
+              </mat-form-field>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <mat-form-field class="example-full-width">
+                <input
+                  matInput
+                  placeholder="Password"
+                  [(ngModel)]="user.password"
+                  name="password"
+                  required
+                />
+              </mat-form-field>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <mat-form-field class="example-full-width">
+                <input
+                  matInput
+                  placeholder="Image Url"
+                  [(ngModel)]="user.imageurl"
+                  name="imageurl"
+                  required
+                />
+              </mat-form-field>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <mat-form-field class="example-full-width">
+                <mat-select
+                  placeholder="Select a role"
+                  [(ngModel)]="user.role"
+                  name="role"
+                  required
+                >
+                  <mat-option value="user" name="user"> User</mat-option>
+                  <mat-option value="admin" name="admin"> Admin</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <!-- <mat-form-field class="example-full-width"> -->
+              <mat-radio-group [(ngModel)]="user.isActive" name="isActive">
+                <mat-radio-button value="true">Active</mat-radio-button>
+                <mat-radio-button value="false">Inactive</mat-radio-button>
+              </mat-radio-group>
+              <!-- </mat-form-field> -->
+            </td>
+          </tr>
+        </table>
+      </form>
+      <mat-spinner
+        [style.display]="showSpinner ? 'block' : 'none'"
+      ></mat-spinner>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button (click)="createUser()" color="primary">
+        Create
+      </button>
+      <button mat-raised-button (click)="onCloseClick()" color="primary">
+        close
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

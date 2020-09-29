@@ -1,0 +1,109 @@
+<nav class="mb-1 navbar navbar-expand-lg navbar-dark lighten-1">
+  <a class="navbar-brand" routerLink="/">Prono21</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent-555"
+    aria-controls="navbarSupportedContent-555"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent-555">
+    <ul class="navbar-nav mr-auto">
+      <!-- <li class="nav-item active">
+        <a
+          *ngIf="loginService.isUserLoggedIn()"
+          class="nav-link"
+          routerLink="user"
+          >View Users
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          *ngIf="loginService.isUserLoggedIn()"
+          class="nav-link"
+          routerLink="user"
+          >Add New User</a
+        >
+      </li> -->
+      <li class="nav-item">
+        <a
+          *ngIf="loginService.isUserLoggedIn()"
+          class="nav-link"
+          [routerLink]="['bets']"
+          routerLinkActive="router-link-active"
+        >
+          Bets
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a *ngIf="loginService.isUserLoggedIn()" class="nav-link" href="#">
+          navitem 3
+        </a>
+      </li>
+      <li class="nav-item">
+        <a *ngIf="loginService.isUserLoggedIn()" class="nav-link" href="#">
+          navitem 4
+        </a>
+      </li>
+      <li class="nav-item">
+        <a *ngIf="loginService.isUserLoggedIn()" class="nav-link" href="#">
+          navitem 5
+        </a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a
+          *ngIf="!loginService.isUserLoggedIn()"
+          class="nav-link"
+          routerLink="/login"
+          >login</a
+        >
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto nav-flex-icons">
+      <li class="nav-item avatar">
+        <a *ngIf="loginService.isUserLoggedIn()" class="nav-link p-0" href="#">
+          <img
+            src="https://pickaface.net/gallery/avatar/MissGriffith529ca4c121402.png"
+            class="rounded-circle z-depth-0"
+            alt="avatar image"
+            height="35"
+          />
+        </a>
+      </li>
+      <li class="nav-item">
+        <a *ngIf="loginService.isUserLoggedIn()" class="nav-link" href="#">{{
+          actualUser
+        }}</a>
+      </li>
+
+      <li class="nav-item">
+        <a
+          *ngIf="loginService.isUserLoggedIn()"
+          class="nav-link"
+          href="#"
+          routerLink="/logout"
+          >logout</a
+        >
+      </li>
+
+      <li class="nav-item">
+        <a
+          *ngIf="loginService.isUserLoggedIn()"
+          class="nav-link"
+          href="#"
+          routerLink="/admin"
+          routerLinkActive="router-link-active"
+          >admin</a
+        >
+      </li>
+    </ul>
+  </div>
+</nav>
