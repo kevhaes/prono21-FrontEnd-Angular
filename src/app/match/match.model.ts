@@ -11,6 +11,7 @@ export class Match {
     public status: number,
     public hasBet?: boolean,
     public homeBet?: number,
-    public awayBet?: number
+    public awayBet?: number,
+    public isInModificationMode?: boolean
   ) {}
 }

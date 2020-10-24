@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Match } from "../match/match.model";
 import { Team } from "../team/team.model";
 import { User } from "../user/user.model";
@@ -26,6 +26,9 @@ export class HttpClientService {
   createUser(user) {
     return this.httpClient.post<User>(this.apiURL + "/register", user);
   }
+  getUser(id: number) {
+    return this.httpClient.get<User>(this.apiURL + "/api/users/" + id);
+  }
 
   //matches
   getMatches() {
@@ -33,6 +36,24 @@ export class HttpClientService {
   }
   createMatch(match: Match) {
     return this.httpClient.post<Match>(this.apiURL + "/api/matches", match);
+  }
+  getMatchById(id: number) {
+    return this.httpClient.get<Match>(this.apiURL + "/api/matches/" + id);
+  }
+
+  modifyMatch(id: any, hometeamscore: any, awayteamscore: any) {
+    console.log(id);
+    console.log(hometeamscore);
+    console.log(awayteamscore);
+    let params = new HttpParams()
+      .set("id", id)
+      .set("hometeamscore", hometeamscore)
+      .set("awayteamscore", awayteamscore);
+    console.log(params.toString());
+
+    return this.httpClient.put("http://localhost:8080/api/matches/", "", {
+      params: params,
+    });
   }
 
   //teams
@@ -51,7 +72,12 @@ export class HttpClientService {
 
   getMatchesAndBetsForUser(username: string) {
     return this.httpClient.get<any[]>(
-      this.apiURL + "/api/matches" + "/" + username
+      this.apiURL + "/api/matches/bets/" + username
+    );
+  }
+  getBetsForMatch(matchId) {
+    return this.httpClient.get<Bet[]>(
+      this.apiURL + "/api/matches/" + matchId + "/bets"
     );
   }
 }

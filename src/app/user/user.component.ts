@@ -5,6 +5,7 @@ import { MatDialog } from "@angular/material/dialog";
 import { AddUserComponent } from "../add-user/add-user.component";
 import { MessageComponent } from "../shared/message/message.component";
 import { Location } from "@angular/common";
+import Swal from "sweetalert2";
 
 @Component({
   selector: "app-user",
@@ -50,15 +51,44 @@ export class UserComponent implements OnInit {
       location.reload();
     });
   }
-  onDeleteUser(user: User): void {
-    this.httpClientService.deleteUser(user.id).subscribe((data) => {
-      (this.users = this.users.filter((u) => u !== user)),
-        alert(user.username + " deleted succesfully"),
-        (error) => {
-          console.debug(
-            "could not delete " + user.username + JSON.stringify(error, null, 2)
-          );
-        };
+
+  //  (click)="onDeleteUser(user)"
+  deleteUser(user: User): boolean {
+    var result;
+    this.httpClientService.deleteUser(user.id).subscribe(
+      (response) => {
+        this.users = this.users.filter((u) => u !== user);
+        result = true;
+      },
+      (error) => {
+        result = false;
+      }
+    );
+    return result;
+  }
+
+  confirmBox(user: User) {
+    console.log("USER TO DELETE: "+JSON.stringify(user, null, 2));
+
+    Swal.fire({
+      title: "Are you sure want to remove" + user.username + " ?",
+      text: "You will not be able to recover this user!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete user!",
+      cancelButtonText: "No, keep user",
+    }).then((result) => {
+      if (result.value) {
+        this.deleteUser(user);
+        // if (this.deleteUser(user)) {
+        Swal.fire("Deleted!", "user has been deleted.", "success");
+        // }
+        // else {
+        //   Swal.fire("something whent wrong");
+        // }
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire("Cancelled", " " + user.username + " is safe !", "error");
+      }
     });
   }
 }

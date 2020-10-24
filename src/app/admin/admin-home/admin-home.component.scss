@@ -1,0 +1,109 @@
+.header-image {
+  height: 400px;
+  background: url("https://cdn-europe1.lanmedia.fr/var/europe1/storage/images/europe1/societe/football-quelle-est-lorigine-du-carton-jaune-3999635/56170081-1-fre-FR/Football-quelle-est-l-origine-du-carton-jaune.jpg")
+    no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+.header-block {
+  height: 100%;
+  background-color: #5d7154ce;
+  color: white;
+  width: 50%;
+  margin: auto;
+  border-color: white;
+  border-style: solid;
+  border-width: 0 15px;
+  display: table;
+}
+.header-text {
+  text-align: center;
+  vertical-align: middle;
+  display: table-cell;
+}
+.header-text-title {
+  display: inline-block;
+  font-size: 30px;
+  font-weight: 500;
+  padding-bottom: 10px;
+  border-bottom: 1px solid white;
+}
+.header-text p {
+  padding: 10px 40px;
+}
+.layout-container {
+  max-width: 1140px;
+  padding-right: 30px;
+  padding-left: 30px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.product-grid {
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+.product-image {
+  width: 100%;
+  height: 0;
+  padding-bottom: 66.66667%;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.image-container {
+  position: relative;
+}
+.image-container:hover .product-image {
+  opacity: 0.3;
+  background-size: 120%;
+}
+.image-container:hover .overlay {
+  opacity: 1;
+}
+.overlay {
+  transition: 0.5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+.overlay .button {
+  width: 160px;
+  line-height: 38px;
+}
+.overlay .button:first-child {
+  margin-bottom: 2em;
+}
+.product-details {
+  padding-top: 15px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+.product-brand {
+  display: block;
+  margin: 0.5em 0;
+  color: #7d7d7d;
+}
+.product-title {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  font-size: 1em;
+  line-height: 1.2;
+  font-weight: 400;
+  font-family: Roboto;
+}
+.product-price {
+  font-size: 1.14286em;
+  color: #9f9f9f;
+  font-family: Playfair Display;
+}
+@media screen and (max-width: 767px) {
+  .header-block {
+    width: 100%;
+  }
+}

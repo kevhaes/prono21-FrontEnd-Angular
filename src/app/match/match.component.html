@@ -14,6 +14,7 @@
           </div>
         </div>
       </div>
+
       <table
         matSort
         (matSortChange)="sortData($event)"
@@ -21,33 +22,43 @@
       >
         <thead>
           <tr>
+            <th mat-sort-header="matchid">ID</th>
             <th mat-sort-header="matchdate">Date</th>
             <th mat-sort-header="hometeam">Home Team</th>
             <th mat-sort-header="awayteam">Visitors</th>
-            <th >Score Home Team</th>
-            <th>Score Visitors</th>
+            <th>Score</th>
             <th mat-sort-header="status">Status</th>
             <th>Action</th>
           </tr>
         </thead>
+
         <tbody>
           <tr *ngFor="let match of sortedData">
+            <td>{{ match.id }}</td>
             <td>{{ match.matchdate | date: short }}</td>
-            <td>{{ match.hometeam.name }}</td>
+            <td>
+              {{ match.hometeam.name }}
+            </td>
             <td>{{ match.awayteam.name }}</td>
-            <td>{{ match.hometeamscore }}</td>
-            <td>{{ match.awayteamscore }}</td>
-            <td>{{ match.status | statusName }}</td>
+            <ng-container
+              *ngIf="!match.isInModificationMode; else scoreFormTemplate"
+            >
+              <td>{{ match.hometeamscore }} - {{ match.awayteamscore }}</td>
+            </ng-container>
+
+            <td (click)="(onChangeStatus)">{{ match.status | statusName }}</td>
+
             <td>
               <a
-                href="#"
+                (click)="onToggleModifymode(match.id)"
+                style="cursor: pointer"
                 class="settings"
                 title="Settings"
                 data-toggle="tooltip"
                 ><i class="material-icons">&#xE8B8;</i></a
               >
               <a
-                (click)="onDeleteUser(user)"
+                (click)="onDeleteMatch(match)"
                 style="cursor: pointer"
                 class="delete"
                 title="Delete"
@@ -55,9 +66,46 @@
                 ><i class="material-icons">delete</i></a
               >
             </td>
+
+            <ng-template #scoreFormTemplate>
+              <td>
+                <form [formGroup]="scoreForm" (ngSubmit)="onSubmitForm()">
+                  <div class="form-inline">
+                    <input
+                      class="form-control"
+                      type="number"
+                      formControlName="hometeamscore"
+                      value="{{ match.hometeamscore }}"
+                      id="hometeamscore"
+                    />
+                    <input
+                      class="form-control"
+                      type="number"
+                      formControlName="awayteamscore"
+                      value="{{ match.awayteamscore }}"
+                      id="awayteamscore"
+                    />
+                    <input
+                      type="hidden"
+                      formControlName="matchId"
+                      value="{{ match.id }}"
+                      id="matchId"
+                    />
+                    <button
+                      type="submit"
+                      (click)="onSubmitScore(scoreForm)"
+                      class="btn btn-primary btn-xs form-control"
+                    >
+                      Modify
+                    </button>
+                  </div>
+                </form>
+              </td>
+            </ng-template>
           </tr>
         </tbody>
       </table>
+
       <div class="clearfix">
         <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
         <ul class="pagination">

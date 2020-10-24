@@ -1,7 +1,7 @@
 .sidebar {
   background-color: #2c5364;
   position: fixed;
-  transition: height 1s ease-in-out;
+  transition: all 0.2s ease-in 0.2s;
 }
 
 .sidebar nav {
@@ -22,7 +22,7 @@
   display: flex;
   padding-left: 20px;
   text-decoration: none;
-  transition: color 0.2s ease, background-color 0.2s ease;
+  transition: all 0.3s ease-in 0s;
 }
 
 .sidebar .sidebar__nav .sidebar__nav__link:hover {

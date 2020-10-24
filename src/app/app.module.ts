@@ -6,7 +6,7 @@ import { AppComponent } from "./app.component";
 import { UserComponent } from "./user/user.component";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { AddUserComponent } from "./add-user/add-user.component";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HeaderComponent } from "./header/header.component";
 import { FooterComponent } from "./footer/footer.component";
 import { LoginComponent } from "./login/login.component";
@@ -30,7 +30,10 @@ import { BetComponent } from "./bet/bet.component";
 import { StatusToString } from "./shared/status-to-string.pipe";
 import { NumberToString } from "./shared/number-to-string.pipe";
 import { MatSortModule } from "@angular/material/sort";
-import { AdminBetComponent } from './admin/admin-bet/admin-bet.component';
+import { AdminBetComponent } from "./admin/admin-bet/admin-bet.component";
+import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
+import { MatchDetailsComponent } from './match/match-details/match-details.component';
+import { UserDetailsComponent } from './user/user-details/user-details.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +56,9 @@ import { AdminBetComponent } from './admin/admin-bet/admin-bet.component';
     StatusToString,
     NumberToString,
     AdminBetComponent,
+    AdminHomeComponent,
+    MatchDetailsComponent,
+    UserDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,6 +67,7 @@ import { AdminBetComponent } from './admin/admin-bet/admin-bet.component';
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     MatDatepickerModule,
     MatInputModule,
     MatNativeDateModule,

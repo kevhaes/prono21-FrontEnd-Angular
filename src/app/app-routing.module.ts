@@ -12,6 +12,9 @@ import { HomeComponent } from "./home/home.component";
 import { TeamComponent } from "./team/team.component";
 import { BetComponent } from "./bet/bet.component";
 import { AdminBetComponent } from "./admin/admin-bet/admin-bet.component";
+import { AdminHomeComponent } from "./admin/admin-home/admin-home.component";
+import { MatchDetailsComponent } from "./match/match-details/match-details.component";
+import { UserDetailsComponent } from "./user/user-details/user-details.component";
 // import { LeaderboardComponent } from "./user/leaderboard/leaderboard.component";
 
 const routes: Routes = [
@@ -23,6 +26,18 @@ const routes: Routes = [
       {
         path: "bets",
         component: BetComponent,
+        canActivate: [AuthGaurdService],
+      },
+      {
+        path: "match/:id/match-details",
+        component: MatchDetailsComponent,
+        pathMatch: "full",
+        canActivate: [AuthGaurdService],
+      },
+      {
+        path: "users/:id",
+        component: UserDetailsComponent,
+        pathMatch: "full",
         canActivate: [AuthGaurdService],
       },
     ],
@@ -40,16 +55,16 @@ const routes: Routes = [
     component: LogoutComponent,
     canActivate: [AuthGaurdService],
   },
-  // {
-  //   path: "leaderboard",
-  //   component: LeaderboardComponent,
-  //   canActivate: [AuthGaurdService],
-  // },
   {
     path: "admin",
     component: AdminComponent,
     canActivate: [AuthGaurdService],
     children: [
+      {
+        path: "",
+        component: AdminHomeComponent,
+        canActivate: [AuthGaurdService],
+      },
       {
         path: "users",
         component: UserComponent,

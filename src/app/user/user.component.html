@@ -21,10 +21,12 @@
             <th>Username</th>
             <th>First Name</th>
             <th>Last Name</th>
-            <th>Total Points</th>
+            <th>Empty</th>
             <th>User ID</th>
             <th>Role</th>
             <th>Status</th>
+            <th>Total Points</th>
+            <th>Rank</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -37,12 +39,13 @@
                 {{ user.username }}</a
               >
             </td>
-            <td>{{ user.firstName }}</td>
-            <td>{{ user.lastName }}</td>
-            <td>{{ user.totalscore }}</td>
+            <td>{{ user.firstname }}</td>
+            <td>{{ user.lastname }}</td>
+            <td>#</td>
 
             <td>{{ user.id }}</td>
             <td>{{ user.role }}</td>
+
             <td>
               <span
                 [ngClass]="
@@ -52,6 +55,16 @@
               >
               {{ user.isActive ? "Active" : "Inactive" }}
             </td>
+            <ng-container *ngIf="user.userStats; else templateEmptyStats">
+              <td>
+                {{ user.userStats.points }}
+              </td>
+              <td>{{ user.userStats.place }}</td>
+            </ng-container>
+            <ng-template #templateEmptyStats>
+              <td>no points</td>
+              <td>no rank</td>
+            </ng-template>
             <td>
               <a
                 href="#"
@@ -61,7 +74,7 @@
                 ><i class="material-icons">&#xE8B8;</i></a
               >
               <a
-                (click)="onDeleteUser(user)"
+                (click)="confirmBox(user)"
                 style="cursor: pointer"
                 class="delete"
                 title="Delete"

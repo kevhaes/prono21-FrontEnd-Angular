@@ -4,31 +4,22 @@
       <tr>
         <td>
           <h4>Leaderboard Prono21</h4>
-          <div id="leader">
-            <img
-              id="winneravatar"
-              [src]="
-                'https://images.unsplash.com/photo-1533227268428-f9ed0900fb3b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1158&q=80'
-              "
-            />
-            <p><strong>1. Kevin Haesendonck</strong></p>
-            <p>100 <span class="text-muted">pts</span></p>
-          </div>
         </td>
       </tr>
-      <ol start="2">
-        <tr *ngFor="let user of usersSortBy('totalscore')">
+      <ol start="1">
+        <tr
+          *ngFor="let user of usersSortBy('points'); let i = index"
+          [class.leader]="i == 0"
+        >
           <li>
             <td>
               <img class="avatar" [src]="user.imageurl" />
-              <a class="text-warning" href="google.com">
+              <a [routerLink]="['/users/', user.id]" class="text-secondary">
                 {{ user.username }}
               </a>
             </td>
 
-            <td class="text-right">
-              {{ user.totalscore }} <span class="text-muted">pts</span>
-            </td>
+            <td>{{ user.points }} <span class="text-muted">pts</span></td>
           </li>
         </tr>
       </ol>

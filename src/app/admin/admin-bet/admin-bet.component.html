@@ -24,9 +24,10 @@
             <th mat-sort-header="betId">Bet ID</th>
             <th mat-sort-header="matchId">Match</th>
             <th mat-sort-header="userId">User</th>
-            <th>awayTeamBet</th>
             <th>homeTeamBet</th>
+            <th>awayTeamBet</th>
             <th mat-sort-header="status">Match Status</th>
+            <th>Obtainedpoints</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -37,9 +38,10 @@
               {{ bet.match.hometeam.name }} - {{ bet.match.awayteam.name }}
             </td>
             <td>{{ bet.user.username }}</td>
-            <td>{{ bet.awayteambet }}</td>
             <td>{{ bet.hometeambet }}</td>
-            <td>{{ bet.match.status }}</td>
+            <td>{{ bet.awayteambet }}</td>
+            <td>{{ bet.match.status | statusName }}</td>
+            <td>{{ bet.obtainedpoints }}</td>
             <td>
               <a
                 href="#"

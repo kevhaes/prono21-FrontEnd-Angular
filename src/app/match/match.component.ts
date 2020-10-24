@@ -1,10 +1,16 @@
-import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { Match } from "./match.model";
 import { AddMatchComponent } from "../admin/add-match/add-match.component";
 import { HttpClientService } from "../service/httpclient.service";
 import { MatDialog } from "@angular/material/dialog";
 import { Sort } from "@angular/material/sort";
+import {
+  FormControl,
+  FormGroup,
+  FormBuilder,
+  Validators,
+} from "@angular/forms";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "app-match",
@@ -12,24 +18,39 @@ import { Sort } from "@angular/material/sort";
   styleUrls: ["./match.component.scss"],
 })
 export class MatchComponent implements OnInit {
+  scoreForm: FormGroup;
+  //match: Observable<Match>;
+  // new FormGroup({
+  //   hometeamscore: new FormControl(),
+  //   awayteamscore: new FormControl(),
+  //   matchId: new FormControl(),
+  // });
   matches: Match[] = [];
+  modifiedMatch = new Match(
+    "",
+    null,
+    null,
+    null,
+    null,
+    new Date(),
+    null,
+    false //IsinModificationMode
+  );
+  modifymode = false;
 
   constructor(
     private httpClientService: HttpClientService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private formBuilder: FormBuilder
   ) {}
 
   ngOnInit() {
     this.getAllMatches();
+    // this.initForm();
   }
+  //------------------------------------------------------------------------------
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(AddMatchComponent, {});
-    dialogRef.afterClosed().subscribe((result) => {
-      //alert("thank you for adding match: " + JSON.stringify(result, null, 2));
-    });
-  }
-
+  //matches fetch
   getAllMatches() {
     this.httpClientService.getMatches().subscribe(
       (response) => {
@@ -38,6 +59,23 @@ export class MatchComponent implements OnInit {
       (error) => console.log(JSON.stringify(error))
     );
   }
+  //match mody
+  modifyMatch(id: any, hometeamscore: any, awayteamscore: any) {
+    this.httpClientService
+      .modifyMatch(id, hometeamscore, awayteamscore)
+      .subscribe(
+        (response) => {
+          this.modifiedMatch = this.matches.filter((x) => x.id == id)[0];
+          this.modifiedMatch.hometeamscore = hometeamscore;
+          this.modifiedMatch.awayteamscore = awayteamscore;
+          this.modifiedMatch.isInModificationMode = false;
+        },
+        (error) => {
+          alert("something whent wrong");
+        }
+      );
+  }
+
   handleSuccessfullResponse(response) {
     this.matches = response;
     this.sortedData = this.matches.slice();
@@ -46,6 +84,42 @@ export class MatchComponent implements OnInit {
         JSON.stringify(response, null, 2)
     );
   }
+  //------------------------------------------------------------------------------
+
+  // form
+
+  onToggleModifymode(matchId: string): void {
+    console.log("match id = " + matchId);
+    this.modifiedMatch = this.matches.filter((x) => x.id == matchId)[0];
+    this.modifiedMatch.isInModificationMode = !this.modifiedMatch
+      .isInModificationMode;
+    this.initForm(matchId);
+  }
+
+  private initForm(id: any) {
+    const match = this.matches.filter((x) => x.id == id)[0];
+
+    this.scoreForm = this.formBuilder.group({
+      hometeamscore: [match.hometeamscore, Validators.required],
+      awayteamscore: [match.awayteamscore, Validators.required],
+      matchId: [id, Validators.required],
+    });
+  }
+  onSubmitScore(scoreForm: any) {
+    let id = scoreForm.value["matchId"];
+    let hometeamscore = scoreForm.value["hometeamscore"];
+    let awayteamscore = scoreForm.value["awayteamscore"];
+    this.modifyMatch(id, hometeamscore, awayteamscore);
+  }
+  onSubmitForm() {}
+  //------------------------------------------------------------------------------
+
+  //popup
+  openDialog(): void {
+    const dialogRef = this.dialog.open(AddMatchComponent, {});
+    dialogRef.afterClosed().subscribe((result) => {});
+  }
+  //------------------------------------------------------------------------------
   //sort table
   sortedData: Match[];
   sortData(sort: Sort) {

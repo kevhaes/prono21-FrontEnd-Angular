@@ -5,6 +5,8 @@ import { Match } from "../match/match.model";
 import { NgForm } from "@angular/forms";
 import { Bet } from "./bet.model";
 import { find } from "rxjs/operators";
+import Swal from "sweetalert2";
+import { Location } from "@angular/common";
 
 @Component({
   selector: "app-bet",
@@ -27,7 +29,10 @@ export class BetComponent implements OnInit {
   // public awayTeamBet: number,
   // public obtainedpoints: number
 
-  constructor(private httpClientService: HttpClientService) {}
+  constructor(
+    private httpClientService: HttpClientService,
+    private location: Location
+  ) {}
 
   ngOnInit() {
     this.getAllMatchesForUser();
@@ -52,7 +57,8 @@ export class BetComponent implements OnInit {
     });
   }
 
-  onSubmit(betForm) {
+  //
+  submitForm(betForm) {
     this.setValuesNewBet(betForm);
     this.httpClientService.createBet(this.newBet).subscribe(
       (response) => {
@@ -64,7 +70,7 @@ export class BetComponent implements OnInit {
     );
   }
   handleSuccessfullResponse(response) {
-    alert("Bet Created: " + JSON.stringify(response, null, 2));
+    //alert("Bet Created: " + JSON.stringify(response, null, 2));
     //  temporary change to a match with bet
     var matchOfBet = this.upcommingMatches.find(
       (match) => match.id == response.match_id
@@ -81,5 +87,27 @@ export class BetComponent implements OnInit {
     this.newBet.match_id = betForm.value.match_id;
     this.newBet.homeTeamBet = +betForm.value.homeTeamBet;
     this.newBet.awayTeamBet = +betForm.value.awayTeamBet;
+  }
+
+  //message after submit bet
+  confirmBox(betForm) {
+    //console.log("BET: " + JSON.stringify(betForm, null, 2));
+
+    Swal.fire({
+      title: "Are you sure want to register this bet ?",
+      text: "You will not be able to modify this bet!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, register bet!",
+      cancelButtonText: "No, cancel please",
+    }).then((result) => {
+      if (result.value) {
+        this.submitForm(betForm);
+        Swal.fire("Done!", "Bet has been registred.", "success");
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire("Cancelled", "this bet was not saved !", "error");
+      }
+    });
+    // location.reload();
   }
 }

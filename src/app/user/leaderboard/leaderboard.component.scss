@@ -1,21 +1,41 @@
+.table td {
+  vertical-align: middle;
+  width: 150px;
+  text-align: center;
+}
 .avatar {
   border-radius: 50%;
   vertical-align: middle;
   margin-right: 10px;
   height: 30px;
 }
+.leader {
+  font-weight: bolder;
+  color: wheat;
+  // background-color: goldenrod;
+  background-image: url("https://www.channelfutures.com/files/2018/05/Trophy-2018.jpg");
+  text-align: center;
+  text-transform: uppercase;
+  // padding-left: 10%;
+  // padding-right: 10%;
+}
 
-#winneravatar {
-  border-radius: 00%;
-  vertical-align: middle;
-  height: 150px;
+.leader .avatar {
+  border-radius: 50%;
+  margin-right: 10px;
+  height: 100px;
 }
-#leader {
-  padding-left: 10%;
-  padding-right: 10%;
-}
+// #winneravatar {
+//   border-radius: 00%;
+//   vertical-align: middle;
+//   height: 150px;
+// }
+// #leader {
+//   padding-left: 10%;
+//   padding-right: 10%;
+// }
 
-#leader p {
-  padding-left: 5%;
-  padding-right: 5%;
-}
+// #leader p {
+//   padding-left: 5%;
+//   padding-right: 5%;
+// }
