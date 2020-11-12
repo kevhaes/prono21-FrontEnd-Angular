@@ -15,6 +15,8 @@ import { AdminBetComponent } from "./admin/admin-bet/admin-bet.component";
 import { AdminHomeComponent } from "./admin/admin-home/admin-home.component";
 import { MatchDetailsComponent } from "./match/match-details/match-details.component";
 import { UserDetailsComponent } from "./user/user-details/user-details.component";
+import { NotFoundComponent } from "./not-found/not-found.component";
+import { ShoutBoxComponent } from "./shout-box/shout-box.component";
 // import { LeaderboardComponent } from "./user/leaderboard/leaderboard.component";
 
 const routes: Routes = [
@@ -37,6 +39,12 @@ const routes: Routes = [
       {
         path: "users/:id",
         component: UserDetailsComponent,
+        pathMatch: "full",
+        canActivate: [AuthGaurdService],
+      },
+      {
+        path: "shoutbox",
+        component: ShoutBoxComponent,
         pathMatch: "full",
         canActivate: [AuthGaurdService],
       },
@@ -92,6 +100,8 @@ const routes: Routes = [
       },
     ],
   },
+  { path: "404", component: NotFoundComponent },
+  { path: "**", redirectTo: "404" },
 ];
 
 @NgModule({

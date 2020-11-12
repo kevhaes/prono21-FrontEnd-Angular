@@ -1,155 +1,15 @@
-<div class="row">
+<!-- <div class="row">
   <div class="container-xl">
     <h4>Ongoing Matches</h4>
 
-    <table class="table table-striped table-hover">
-      <thead class="thead-light">
-        <tr>
-          <th>MatchId</th>
-          <th>Date</th>
-          <th>Match</th>
-          <th>Match result</th>
-          <th>Match Status</th>
-          <th>Bet Status</th>
-          <th>My Bet</th>
-          <th>Virtualy Obtained points</th>
-        </tr>
-      </thead>
 
-      <tbody>
-        <tr
-          *ngFor="let match of ongoingMatches"
-          a
-          [routerLink]="['../match', match.id, 'match-details']"
-        >
-          <td>{{ match.id }}</td>
-
-          <td>{{ match.matchdate | date: short }}</td>
-          <td>{{ match.hometeam.name }} - {{ match.awayteam.name }}</td>
-          <td>{{ match.hometeamscore }} - {{ match.awayteamscore }}</td>
-          <td style="color: red">
-            LIVE <span class="material-icons"> live_tv </span>
-          </td>
-          <td>{{ match.hasBet }}</td>
-          <td>
-            {{ match.homeBet | numberToString }} -
-            {{ match.awayBet | numberToString }}
-          </td>
-          <td>{{ match.obtainedpoints }}</td>
-        </tr>
-      </tbody>
-    </table>
 
     <h4>Upcomming Matches</h4>
-    <table class="table table-striped table-hover">
-      <thead class="thead-light">
-        <tr>
-          <th>MatchId</th>
-          <th>Date</th>
-          <th>Match</th>
-          <th>My Bet</th>
-          <th>Match Status</th>
-          <th>Bet Placed ?</th>
-          <th>?Obtained Points?</th>
-        </tr>
-      </thead>
 
-      <tbody>
-        <ng-container *ngFor="let match of upcommingMatches">
-          <tr a [routerLink]="['../match', match.id, 'match-details']">
-            <td>{{ match.id }}</td>
-            <td>{{ match.matchdate | date: short }}</td>
-            <td>{{ match.hometeam.name }} - {{ match.awayteam.name }}</td>
-            <td *ngIf="!match.hasBet; else submitedBets">
-              <form
-                [hidden]="betForm.submitted"
-                #betForm="ngForm"
-                (ngSubmit)="confirmBox(betForm)"
-                class="form-inline"
-              >
-                <select
-                  class="custom-select mb-2 mr-sm-2 mb-sm-0"
-                  type="number"
-                  id="homeTeamBet"
-                  ngModel
-                  name="homeTeamBet"
-                  #homeTeamBet="ngModel"
-                  required
-                >
-                  <option
-                    *ngFor="let num of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
-                    [value]="num"
-                  >
-                    {{ num }}
-                  </option>
-                </select>
-
-                -
-                <select
-                  class="custom-select mb-2 mr-sm-2 mb-sm-0"
-                  type="number"
-                  id="awayTeamBet"
-                  ngModel
-                  name="awayTeamBet"
-                  #homeTeamBet="ngModel"
-                  required
-                >
-                  <option
-                    *ngFor="let num of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
-                    [value]="num"
-                  >
-                    {{ num }}
-                  </option>
-                </select>
-
-                <input type="hidden" ngModel="{{ match.id }}" name="match_id" />
-                <input
-                  [hidden]="betForm.submitted"
-                  [disabled]="!betForm.valid"
-                  type="submit"
-                  value="Save"
-                  class="btn btn-success"
-                />
-              </form>
-            </td>
-            <ng-template #submitedBets>
-              <td>{{ match.homeBet }} - {{ match.awayBet }}</td>
-            </ng-template>
-
-            <td>{{ match.status | statusName }}</td>
-            <td>{{ match.hasBet }}</td>
-            <td>{{ match.obtainedpoints }}</td>
-          </tr>
-        </ng-container>
-      </tbody>
-    </table>
 
     <h4>Finished Matches</h4>
 
-    <table class="table table-striped table-hover">
-      <thead class="thead-light">
-        <tr>
-          <th>MatchId</th>
-          <th>Date</th>
-          <th>Match</th>
-          <th>Match result</th>
-          <th>Match Status</th>
-          <th>Bet Status</th>
-          <th>Obtained points</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let match of finnishedMatches">
-          <td>{{ match.id }}</td>
-          <td>{{ match.matchdate | date: short }}</td>
-          <td>{{ match.hometeam.name }} - {{ match.awayteam.name }}</td>
-          <td>{{ match.hometeamscore }} - {{ match.awayteamscore }}</td>
-          <td>{{ match.status | statusName }}</td>
-          <td>{{ match.hasBet }}</td>
-          <td>{{ match.obtainedpoints | numberToString }}</td>
-        </tr>
-      </tbody>
-    </table>
+
   </div>
 </div>
 <!--
@@ -158,3 +18,205 @@
 2	ongoing
 3	finnished
 -->
+
+<div id="card-742827">
+  <div class="card">
+    <div class="card-header">
+      <a
+        class="card-link"
+        data-toggle="collapse"
+        data-parent="#card-742827"
+        href="#card-element-146971"
+        >Ongoing Matches</a
+      >
+    </div>
+    <div id="card-element-146971" class="collapse show">
+      <div class="card-body">
+        <table class="table table-striped table-hover">
+          <thead class="thead-light">
+            <tr>
+              <th>MatchId</th>
+              <th>Date</th>
+              <th>Match</th>
+              <th>Match result</th>
+              <th>Match Status</th>
+              <th>Bet Status</th>
+              <th>My Bet</th>
+              <th>Virtualy Obtained points</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr
+              *ngFor="let match of ongoingMatches"
+              a
+              [routerLink]="['../match', match.id, 'match-details']"
+            >
+              <td>{{ match.id }}</td>
+
+              <td>{{ match.matchdate | date: short }}</td>
+              <td>{{ match.hometeam.name }} - {{ match.awayteam.name }}</td>
+              <td>{{ match.hometeamscore }} - {{ match.awayteamscore }}</td>
+              <td style="color: red">
+                LIVE <span class="material-icons"> live_tv </span>
+              </td>
+              <td>{{ match.hasBet }}</td>
+              <td>
+                {{ match.homeBet | numberToString }} -
+                {{ match.awayBet | numberToString }}
+              </td>
+              <td>{{ match.obtainedpoints }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <a
+        class="collapsed card-link"
+        data-toggle="collapse"
+        data-parent="#card-742827"
+        href="#card-element-268006"
+        >upcomming Matches</a
+      >
+    </div>
+    <div id="card-element-268006" class="collapse-show">
+      <div class="card-body">
+        <table class="table table-striped table-hover">
+          <thead class="thead-light">
+            <tr>
+              <th>MatchId</th>
+              <th>Date</th>
+              <th>Match</th>
+              <th>My Bet</th>
+              <th>Match Status</th>
+              <th>Bet Placed ?</th>
+              <th>?Obtained Points?</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <ng-container *ngFor="let match of upcommingMatches">
+              <tr a [routerLink]="['../match', match.id, 'match-details']">
+                <td>{{ match.id }}</td>
+                <td>{{ match.matchdate | date: short }}</td>
+                <td>{{ match.hometeam.name }} - {{ match.awayteam.name }}</td>
+                <td *ngIf="!match.hasBet; else submitedBets">
+                  <form
+                    [hidden]="betForm.submitted"
+                    #betForm="ngForm"
+                    (ngSubmit)="confirmBox(betForm)"
+                    class="form-inline"
+                  >
+                    <select
+                      class="custom-select mb-2 mr-sm-2 mb-sm-0"
+                      type="number"
+                      id="homeTeamBet"
+                      ngModel
+                      name="homeTeamBet"
+                      #homeTeamBet="ngModel"
+                      required
+                    >
+                      <option
+                        *ngFor="let num of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+                        [value]="num"
+                      >
+                        {{ num }}
+                      </option>
+                    </select>
+
+                    -
+                    <select
+                      class="custom-select mb-2 mr-sm-2 mb-sm-0"
+                      type="number"
+                      id="awayTeamBet"
+                      ngModel
+                      name="awayTeamBet"
+                      #homeTeamBet="ngModel"
+                      required
+                    >
+                      <option
+                        *ngFor="let num of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+                        [value]="num"
+                      >
+                        {{ num }}
+                      </option>
+                    </select>
+
+                    <input
+                      type="hidden"
+                      ngModel="{{ match.id }}"
+                      name="match_id"
+                    />
+                    <input
+                      [hidden]="betForm.submitted"
+                      [disabled]="!betForm.valid"
+                      type="submit"
+                      value="Save"
+                      class="btn btn-success"
+                    />
+                  </form>
+                </td>
+                <ng-template #submitedBets>
+                  <td>{{ match.homeBet }} - {{ match.awayBet }}</td>
+                </ng-template>
+
+                <td>{{ match.status | statusName }}</td>
+                <td>{{ match.hasBet }}</td>
+                <td>{{ match.obtainedpoints }}</td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="card-82946">
+  <div class="card">
+    <div class="card-header">
+      <a
+        class="card-link"
+        data-toggle="collapse"
+        data-parent="#card-82946"
+        href="#card-element-899288"
+        >Finnished Matches</a
+      >
+    </div>
+    <div id="card-element-899288" class="collapse-show">
+      <div class="card-body">
+        <table class="table table-striped table-hover">
+          <thead class="thead-light">
+            <tr>
+              <th>MatchId</th>
+              <th>Date</th>
+              <th>Match</th>
+              <th>Match result</th>
+              <th>Match Status</th>
+              <th>Bet Status</th>
+              <th>Obtained points</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let match of finnishedMatches"
+              a
+              [routerLink]="['../match', match.id, 'match-details']"
+            >
+              <td>{{ match.id }}</td>
+              <td>{{ match.matchdate | date: short }}</td>
+              <td>{{ match.hometeam.name }} - {{ match.awayteam.name }}</td>
+              <td>{{ match.hometeamscore }} - {{ match.awayteamscore }}</td>
+              <td>{{ match.status | statusName }}</td>
+              <td>{{ match.hasBet }}</td>
+              <td>{{ match.obtainedpoints | numberToString }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

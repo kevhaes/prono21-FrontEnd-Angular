@@ -1,0 +1,77 @@
+<!-- postform popup -->
+<div
+  class="modal fade"
+  id="postFormModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="postFormModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="postFormModalLabel">Post</h5>
+
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Cancel"
+          (click)="onCancelEditorCreatePost()" 
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form #postForm="ngForm">
+          <div class="form-group">
+            <label for="post-title" class="col-form-label">Title:</label>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="post.title"
+              name="postTitle"
+              id="post-title"
+              placeholder="Enter title"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="post-text" class="col-form-label">Post:</label>
+            <textarea
+              class="form-control"
+              [(ngModel)]="post.description"
+              name="postDescription"
+              id="post-text"
+              placeholder="Enter description"
+              required
+            ></textarea>
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+              (click)="onCancelEditorCreatePost()"
+            >
+              Cancel
+            </button>
+
+            <button
+              (click)="onSavePost()"
+              type="submit"
+              class="btn btn-primary"
+              [disabled]="!postForm.form.valid"
+              data-dismiss="modal"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

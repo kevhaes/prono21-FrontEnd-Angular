@@ -1,0 +1,27 @@
+.main-section {
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 6px;
+}
+.list-inline-item {
+  border-right: 1px solid black;
+  padding-right: 6px;
+  line-height: 0.4em;
+}
+.list-inline-item:last-child {
+  border: none;
+}
+.post-detail ul {
+  margin-top: 15px;
+}
+.btn-block {
+  width: 20%;
+}
+
+.pointer {
+  cursor: pointer;
+}
+//---------------------------------------------comments
+.user-photo {
+  height: 35px;
+}

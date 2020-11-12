@@ -1,8 +1,41 @@
-<div class="row">
-  <div class="col-md-2">
-    <app-leaderboard class="d-none d-lg-block"></app-leaderboard>
-  </div>
-  <div class="col-md-10">
-    <router-outlet></router-outlet>
+<div class="container-fluid">
+  <div class="row">
+    <!-- ranking -->
+    <div class="col-md-2 mt-4">
+      <app-leaderboard></app-leaderboard>
+    </div>
+
+    <!-- general -->
+    <div class="col-md-7 mt-4">
+      <router-outlet></router-outlet>
+    </div>
+
+    <!-- shoutbox -->
+    <div class="col-md-3 mt-4">
+      <div class="jumbotron">
+        <h2>België wint groepsfase</h2>
+        <p>
+          This is a template for a simple marketing or informational website. It
+          includes a large callout called the hero unit and three supporting
+          pieces of content. Use it as a starting point to create something more
+          unique.
+        </p>
+        <p>
+          <a class="btn btn-primary btn-large" href="#">Learn more</a>
+        </p>
+      </div>
+      <div class="jumbotron">
+        <h2>Hello, world!</h2>
+        <p>
+          This is a template for a simple marketing or informational website. It
+          includes a large callout called the hero unit and three supporting
+          pieces of content. Use it as a starting point to create something more
+          unique.
+        </p>
+        <p>
+          <a class="btn btn-primary btn-large" href="#">Learn more</a>
+        </p>
+      </div>
+    </div>
   </div>
 </div>

@@ -20,7 +20,7 @@ export class BasicAuthHtppInterceptorService implements HttpInterceptor {
         },
       });
     }
-    console.log("Basic aut to handle request;" + req.params);
+    // console.log("Basic aut to handle request;" + req.params);
 
     return next.handle(req);
   }

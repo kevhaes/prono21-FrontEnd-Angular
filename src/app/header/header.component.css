@@ -1,5 +1,7 @@
 .navbar {
-  background: #0f2027; /* fallback for old browsers */
-  background: transparent; /* Chrome 10-25, Safari 5.1-6 */
-  background: transparent; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  z-index: 9999;
+  background-color: rgb(251, 147, 90);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.7);
+  font-weight: 700;
+  font-size: 1.1em;
 }

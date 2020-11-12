@@ -29,11 +29,16 @@ import { LeaderboardComponent } from "./user/leaderboard/leaderboard.component";
 import { BetComponent } from "./bet/bet.component";
 import { StatusToString } from "./shared/status-to-string.pipe";
 import { NumberToString } from "./shared/number-to-string.pipe";
+import { TruncatePipe } from "./shared/truncate.pipe";
 import { MatSortModule } from "@angular/material/sort";
 import { AdminBetComponent } from "./admin/admin-bet/admin-bet.component";
-import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
-import { MatchDetailsComponent } from './match/match-details/match-details.component';
-import { UserDetailsComponent } from './user/user-details/user-details.component';
+import { AdminHomeComponent } from "./admin/admin-home/admin-home.component";
+import { MatchDetailsComponent } from "./match/match-details/match-details.component";
+import { UserDetailsComponent } from "./user/user-details/user-details.component";
+import { NotFoundComponent } from "./not-found/not-found.component";
+import { ShoutBoxComponent } from "./shout-box/shout-box.component";
+import { RelativeTimePipe } from "./shared/time-ago.pipe";
+import { AddPostComponent } from './shout-box/add-post/add-post.component';
 
 @NgModule({
   declarations: [
@@ -55,10 +60,15 @@ import { UserDetailsComponent } from './user/user-details/user-details.component
     BetComponent,
     StatusToString,
     NumberToString,
+    TruncatePipe,
+    RelativeTimePipe,
     AdminBetComponent,
     AdminHomeComponent,
     MatchDetailsComponent,
     UserDetailsComponent,
+    NotFoundComponent,
+    ShoutBoxComponent,
+    AddPostComponent,
   ],
   imports: [
     BrowserModule,

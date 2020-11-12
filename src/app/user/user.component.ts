@@ -3,7 +3,6 @@ import { User } from "./user.model";
 import { HttpClientService } from "../service/httpclient.service";
 import { MatDialog } from "@angular/material/dialog";
 import { AddUserComponent } from "../add-user/add-user.component";
-import { MessageComponent } from "../shared/message/message.component";
 import { Location } from "@angular/common";
 import Swal from "sweetalert2";
 

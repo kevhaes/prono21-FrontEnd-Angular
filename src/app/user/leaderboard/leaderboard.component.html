@@ -1,4 +1,4 @@
-<div class="row">
+<!-- <div class="row">
   <table class="table table-hover ml-1">
     <tbody>
       <tr>
@@ -25,4 +25,109 @@
       </ol>
     </tbody>
   </table>
+</div> -->
+
+<!-- <div class="scoreboard">
+  <ng-container *ngFor="let user of usersSortBy('points'); let i = index">
+    <div [class.leader]="i == 0" class="team">
+      <div class="rank">{{ i + 1 }}</div>
+      <img class="logo" [src]="user.imageurl" />
+      <div class="name">{{ user.username }}</div>
+      <div class="score">{{ user.points }}</div>
+      <div class="record"></div>
+      <!-- <div class="divider"></div> -->
+<!-- </div> -->
+<!-- </ng-container> -->
+<!-- </div> -->
+
+<!-- <div class="card bg-custom">
+  <img
+    alt="Bootstrap Image Preview"
+    src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg"
+    class="card-img-top leader rounded-circle"
+  />
+  <div class="card-body">
+    <h5 class="card-title">1. Kevin Haesendonck</h5>
+    <ol start="2">
+      <li *ngFor="let user of usersSortBy('points'); let i = index">
+        <img class="logo" [src]="user.imageurl" />
+        <span class="name">{{ user.username }}</span>
+        <span class="score">{{ user.points }}</span>
+      </li>
+    </ol>
+  </div>
+  <div class="card-footer">Card footer</div>
+</div> -->
+
+<div class="card ranking-general">
+  <!--LEADER-->
+  <div class="background-block">
+    <img
+      src="https://images.unsplash.com/photo-1508614874708-a0adf94d4c33?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1534&q=80"
+      alt="leader"
+      class="background"
+    />
+  </div>
+  <div class="profile-thumb-block">
+    <img
+      src="https://pickaface.net/gallery/avatar/MissGriffith529ca4c121402.png"
+      alt="profile-image"
+      class="profile"
+    />
+  </div>
+  <div class="card-content">
+    <h2>Kevin Haesendonck<small>152 pts</small></h2>
+    <!--OTHERS-->
+    <div class="card-body">
+      <ol class="text-center" start="2">
+        <li *ngFor="let user of usersSortBy('points'); let i = index">
+          <span>
+            <!-- <img class="logo" [src]="user.imageurl" /> -->
+          </span>
+          <span>
+            {{ user.username }}
+          </span>
+          <span class="points"> {{ user.points }} pts</span>
+
+          <!-- <span class="score">{{ user.points }}</span> -->
+        </li>
+      </ol>
+    </div>
+  </div>
 </div>
+<p class="mt-2 w-100 float-left text-center"></p>
+
+<div class="card">
+  <h5 class="card-header">Country Ranking</h5>
+  <div class="card-body">
+    <ol class="text-center">
+      <li *ngFor="let user of usersSortBy('points'); let i = index">
+        <!-- <img class="logo" [src]="user.imageurl" /> -->
+        <div>
+          {{ user.username }} <span> {{ user.points }} pts</span>
+        </div>
+        <!-- <span class="score">{{ user.points }}</span> -->
+      </li>
+    </ol>
+  </div>
+  <div class="card-footer"></div>
+</div>
+<p class="mt-2 w-100 float-left text-center"></p>
+
+<div class="card">
+  <h5 class="card-header">Gender Ranking</h5>
+  <div class="card-body">
+    <ol class="text-center">
+      <li *ngFor="let user of usersSortBy('points'); let i = index">
+        <!-- <img class="logo" [src]="user.imageurl" /> -->
+        <div>
+          {{ user.username }} <span> {{ user.points }} pts</span>
+        </div>
+
+        <!-- <span class="score">{{ user.points }}</span> -->
+      </li>
+    </ol>
+  </div>
+  <div class="card-footer"></div>
+</div>
+<p class="mt-2 w-100 float-left text-center"></p>

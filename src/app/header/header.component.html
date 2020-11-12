@@ -1,4 +1,4 @@
-<nav class="mb-1 navbar navbar-expand-lg navbar-dark lighten-1">
+<nav class="mb-1 navbar navbar-expand-lg navbar-light lighten-1">
   <a class="navbar-brand" routerLink="/">Prono21</a>
   <button
     class="navbar-toggler"
@@ -25,8 +25,13 @@
       </li>
 
       <li class="nav-item">
-        <a *ngIf="loginService.isUserLoggedIn()" class="nav-link" href="#">
-          navitem 3
+        <a
+          *ngIf="loginService.isUserLoggedIn()"
+          class="nav-link"
+          [routerLink]="['shoutbox']"
+          routerLinkActive="router-link-active"
+        >
+          Shout Box
         </a>
       </li>
       <li class="nav-item">
